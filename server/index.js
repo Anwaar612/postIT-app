@@ -4,6 +4,8 @@ import cors from "cors";
 import UserModel from "./Models/UserModel.js";
 import bcrypt from "bcrypt";
 import PostModel from "./Models/Posts.js";
+import PostModel from "./Models/Posts.js";
+import * as ENV from "./config.js";
 
 import multer from "multer";
 import fs from "fs";
@@ -17,10 +19,11 @@ app.use(express.json());
 app.use(cors());
 
 //Database connection
-const connectString =
-  
-  "mongodb+srv://admin:admin@cluster0.cjlvpdd.mongodb.net/postITDb?retryWrites=true&w=majority&appName=Cluster0";
-  
+//const connectString =
+  //"mongodb+srv://admin:admin@postitcluster.jylximj.mongodb.net/postITDb?retryWrites=true&w=majority&appName=postITCluster";
+
+  const connectString =
+  `mongodb+srv://${ENV.DB_USER}:${ENV.DB_PASSWORD}@${ENV.DB_CLUSTER}//${ENV.DB_NAME}?retryWrites=true&w=majority&appName=postITCluster`;
 mongoose.connect(connectString, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
